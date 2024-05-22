@@ -39,8 +39,21 @@ libprotoc 3.0.0
 
 编译protobuf redis skynet
 
+工具
+1.sudo apt-get install git
+2.sudo apt-get install autoconf
+3.sudo apt-get install gcc
 
 运行：
+
+git：git clone https://github.com/Nailuo2/game_server.git
+
+可能会出现skynet克隆失败 删除文件skynet  重新克隆：git clone https://github.com/cloudwu/skynet.git
+
+编译skynet ：1. cd skynet   2. make linux
+
+
+
 
 
 
