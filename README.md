@@ -25,7 +25,7 @@
 
 ![image](https://github.com/Nailuo2/game_server/assets/170518278/60ae3c0e-8d0e-421f-b7ea-d52a0cf77ec9)
 
-环境：
+**环境：**
 
 ubuntu18.04
 
@@ -37,20 +37,71 @@ lua5.4.2
 
 libprotoc 3.0.0
 
-编译protobuf redis skynet
+编译启动protobuf redis mysql 默认密码123456，如果要修改，分别在service下单agent/init.lua和login/init.lua进行修改
 
-工具
+mysql初始化
+
+CREATE DATABASE game_server;
+CREATE TABLE `player`  (
+  `player_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `coin` int(11) NULL DEFAULT NULL,
+  `level` int(11) NULL DEFAULT 1,
+  `last_login_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `skin` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`player_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+SET FOREIGN_KEY_CHECKS = 1;
+
+工具 用于编译skynet
+
 1.sudo apt-get install git
+
 2.sudo apt-get install autoconf
+
 3.sudo apt-get install gcc
 
-运行：
+**运行：**
 
 git：git clone https://github.com/Nailuo2/game_server.git
 
 可能会出现skynet克隆失败 删除文件skynet  重新克隆：git clone https://github.com/cloudwu/skynet.git
 
-编译skynet ：1. cd skynet   2. make linux
+编译skynet ：1. cd skynet   2. make linux  
+
+如果编译失败提示：缺少jemalloc 跟上面步骤一样 进入skynet/3rd目录 重新克隆：https://github.com/jemalloc/jemalloc.git
+
+编译好后 运行 ./start.h 1
+
+如下报错：
+
+![image](https://github.com/Nailuo2/game_server/assets/170518278/e62c9645-f0c6-44c6-9c63-15d9bbf807ec)
+
+把编译好的protobuf文件protobuf.so和protobuf.lua放入到skynet的luaclib和lualib目录下
+
+./start.h    如果报权限不够：vim start.h 输入 :set ff=unix 然后wq保存
+
+**运行成功：**
+
+![image](https://github.com/Nailuo2/game_server/assets/170518278/f029de98-ade8-419e-8d04-8b99333b20c9)
+
+
+**客户端命令：**
+
+| 命令                       | 响应                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| login,用户名,密码    | 登录到服务器中，如果账号存在且密码正确会登陆成功，否则根据账号是否存在返回账号不存在或者密码错误 |
+| register,用户名,密码 | 向服务器发起注册，如果账号已存在则注册失败，否则注册成功     |
+| check                      | 查看用户当前的信息                                           |
+| enter                      | 随机分配到一个战场，此时服务器会不断更新战场信息给客户端     |
+| leave                      | 退出战场，进行结算                                           |
+| quit                       | 退出当前账号                                                 |
+
+
+
+
+
 
 
 
