@@ -29,13 +29,13 @@
 
 ubuntu18.04
 
-mysql5.7
+mysql 5.7
 
-redis
+redis 4.0.9
 
 lua5.4.2
 
-libprotoc 3.0.0
+protobuf 3.0.0
 
 编译启动protobuf redis mysql 默认密码123456，如果要修改，分别在service下单agent/init.lua和login/init.lua进行修改
 
