@@ -42,6 +42,7 @@ libprotoc 3.0.0
 mysql初始化
 
 CREATE DATABASE game_server;
+
 CREATE TABLE `player`  (
   `player_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -52,6 +53,7 @@ CREATE TABLE `player`  (
   `skin` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`player_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 工具 用于编译skynet
