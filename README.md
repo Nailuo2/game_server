@@ -21,7 +21,7 @@
 
 5.利用Lua处理protobuf协议通信，以减轻gateway的处理负担，同时提高大量可变字符串处理的效率，提高了系统性能。
 
-**服务器架构：**
+**目录结构：**
 
 ![image](https://github.com/Nailuo2/game_server/assets/170518278/60ae3c0e-8d0e-421f-b7ea-d52a0cf77ec9)
 
