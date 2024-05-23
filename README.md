@@ -72,7 +72,7 @@ git：git clone https://github.com/Nailuo2/game_server.git
 
 编译skynet ：1. cd skynet   2. make linux  
 
-如果编译失败提示：缺少jemalloc 跟上面步骤一样 进入skynet/3rd目录 重新克隆：https://github.com/jemalloc/jemalloc.git
+如果编译失败提示：缺少jemalloc 跟上面步骤一样 进入skynet/3rd目录 重新克隆：git clone https://github.com/jemalloc/jemalloc.git
 
 编译好后 运行 ./start.h 1
 
